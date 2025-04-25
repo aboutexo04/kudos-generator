@@ -17,6 +17,7 @@ const generateButton = document.getElementById('generateButton');
 const complimentDisplay = document.getElementById('compliment-display');
 const complimentForm = document.getElementById('complimentForm');
 const complimentInput = document.getElementById('complimentInput');
+const successMessage = document.getElementById('successMessage'); // ✅ select the element
 
 // ✅ Toggle form visibility
 toggleFormButton.addEventListener('click', () => {
@@ -38,7 +39,13 @@ complimentForm.addEventListener('submit', (e) => {
         complimentInput.value = '';
         complimentForm.classList.add('hidden');
         toggleFormButton.textContent = 'Add Kudos';
-      })
+        successMessage.textContent = "Kudos added successfully!"; // ✅ show success message
+        successMessage.style.display="block"; // Show message
+
+        setTimeout(() => {
+          successMessage.style.display="none"; // ✅ hide after 2 seconds
+        }, 3000);
+    })
       .catch((error) => {
         console.error('❌ Error adding compliment:', error);
       });
